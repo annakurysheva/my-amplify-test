@@ -1,0 +1,19 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+    build:
+      commands:
+        - npm run build
+    test:
+      commands:
+        - npm run test
+  artifacts:
+    baseDirectory: dist/my-amplify-test
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*

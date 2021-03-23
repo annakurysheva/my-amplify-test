@@ -7,9 +7,20 @@ frontend:
     build:
       commands:
         - npm run build
+  artifacts:
+    baseDirectory: dist/my-amplify-test
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+test:
+  phases:
     preTest:
       commands:
         - npm ci
+        - wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+        - yum install -y ./google-chrome-stable_current_*.rpm
     test:
       commands:
         - npm run test
